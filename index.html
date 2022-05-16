@@ -167,11 +167,30 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/article/:year00001.html">用jsDelivr和Github做免费的CDN加速</a>
+        <a href="/article/20220004.html">用jsDelivr和Github做免费的CDN加速</a>
     </header>
     <div class="article-entry post-inner-html">
         
-        
+        <h3 id="CDN解释"><a href="#CDN解释" class="headerlink" title="CDN解释"></a>CDN解释</h3><p>CDN是内容分发网络（Content Delivery Network）的首字母简写，是指一组分布在不同地理位置的服务器，协同工作以提供互联网内容的快速交付。</p>
+<p>CDN 允许快速传输加载互联网内容所需的资源，包括 HTML 页面、javascript 文件、样式表、图像和视频。 CDN 服务已得到不断普及。如今，大多数 web 流量都通过 CDN 提供服务，包括来自Facebook、Netflix 和亚马逊等主要网站的流量。</p>
+<p>正确配置的 CDN 还可帮助保护网站免受某些常见的恶意攻击，例如分布式拒绝服务（DDOS）攻击。</p>
+<h5 id="为什么使用CDN"><a href="#为什么使用CDN" class="headerlink" title="为什么使用CDN"></a>为什么使用CDN</h5><ul>
+<li>缩短网站加载时间 – 通过将内容分发到访问者附近的 CDN 服务器（以及其他优化措施），访问者体验到更快的页面加载时间。由于访问者更倾向于离开加载缓慢的网站，CDN 可以降低跳出率并增加人们在该网站上停留的时间。换句话说，网站速度越快，用户停留的时间越长。</li>
+<li>减少带宽成本 – 网站托管的带宽消耗成本是网站的主要费用。通过缓存和其他优化，CDN 能够减少源服务器必须提供的数据量，从而降低网站所有者的托管成本。</li>
+<li>增加内容可用性和冗余 – 大流量或硬件故障可能会扰乱正常的网站功能。由于 CDN 具有分布式特性，因此与许多源服务器相比，CDN 可以处理更多流量并更好地承受硬件故障。<br>改善网站安全性 – CDN 可以通过提供 DDoS 缓解、安全证书的改进以及其他优化措施来提高安全性。</li>
+</ul>
+<h3 id="创建过程"><a href="#创建过程" class="headerlink" title="创建过程"></a>创建过程</h3><h4 id="创建github静态文件存放项目，比如："><a href="#创建github静态文件存放项目，比如：" class="headerlink" title="创建github静态文件存放项目，比如："></a>创建github静态文件存放项目，比如：</h4><p><img src="https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516145102758.png" alt="创建项目"></p>
+<h4 id="提交静态文件到-1创建项目"><a href="#提交静态文件到-1创建项目" class="headerlink" title="提交静态文件到#1创建项目"></a>提交静态文件到#1创建项目</h4><p><img src="https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516145102754.png" alt="提交文件"></p>
+<h4 id="获取转换文件"><a href="#获取转换文件" class="headerlink" title="获取转换文件"></a>获取转换文件</h4><p>复制文件地址到 <a target="_blank" rel="noopener" href="https://www.jsdelivr.com/github">https://www.jsdelivr.com/github</a> 进行地址转换， 点击copy获取cdn连接</p>
+<p>其实这里的路径规则就是 按照</p>
+<pre><code>[https://cdn.jsdelivr.net/gh/](https://link.zhihu.com/?target=https%3A//cdn.jsdelivr.net/gh/)你的用户名/你的仓库名@发布的版本号/文件路径
+</code></pre>
+<p>知道这个规则之后你可以自行修改路径了  :crossed_fingers:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516161211430.png" alt="image-20220516161211430"></p>
+<ol start="4">
+<li>在html或者markdown文件里面引用  :dancer:</li>
+</ol>
+
         
     </div>
     </div>
@@ -186,7 +205,7 @@ class="article article-type-post"
 <footer class="article-footer">
     <div class="article-more-info">
     <div class="article-date">
-  <time datetime="2022-05-16T04:00:41.000Z" itemprop="datePublished">2022-05-16</time>
+  <time datetime="2022-05-16T04:13:50.000Z" itemprop="datePublished">2022-05-16</time>
 </div>
     
     
@@ -210,7 +229,7 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/article/hexo-remark42.html">Hexo的aomori主题使用Remark42搭建文章评论功能</a>
+        <a href="/article/20220002.html">Hexo的aomori主题使用Remark42搭建文章评论功能</a>
     </header>
     <div class="article-entry post-inner-html">
         
@@ -357,7 +376,7 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/article/basic-use-alpine.html">Alpine和eleventy搭配的基本使用</a>
+        <a href="/article/20220001.html">Alpine和eleventy搭配的基本使用</a>
     </header>
     <div class="article-entry post-inner-html">
         
@@ -409,7 +428,7 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/article/java-thread-1.html">JAVA多线程总结之一</a>
+        <a href="/article/20220003.html">JAVA多线程总结之一</a>
     </header>
     <div class="article-entry post-inner-html">
         
@@ -459,10 +478,10 @@ class="article article-type-post"
 <div class="article-inner">
     
     <div class="article-feature">
-        <a href="/article/hello-hexo.html">
+        <a href="/article/20220004.html">
             <img
                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
-                data-src="/images/covers/happy.jpg"
+                data-src="https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/covers/happy.jpg"
                 alt="item.title"
                 class="lazy"
             />
@@ -472,7 +491,7 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/article/hello-hexo.html">开通博客第一天</a>
+        <a href="/article/20220004.html">开通博客第一天</a>
     </header>
     <div class="article-entry post-inner-html">
         
@@ -563,23 +582,23 @@ class="article article-type-post"
       <ul>
         
           <li>
-            <a href="/article/:year00001.html">用jsDelivr和Github做免费的CDN加速</a>
+            <a href="/article/20220004.html">用jsDelivr和Github做免费的CDN加速</a>
           </li>
         
           <li>
-            <a href="/article/hexo-remark42.html">Hexo的aomori主题使用Remark42搭建文章评论功能</a>
+            <a href="/article/20220002.html">Hexo的aomori主题使用Remark42搭建文章评论功能</a>
           </li>
         
           <li>
-            <a href="/article/basic-use-alpine.html">Alpine和eleventy搭配的基本使用</a>
+            <a href="/article/20220001.html">Alpine和eleventy搭配的基本使用</a>
           </li>
         
           <li>
-            <a href="/article/java-thread-1.html">JAVA多线程总结之一</a>
+            <a href="/article/20220003.html">JAVA多线程总结之一</a>
           </li>
         
           <li>
-            <a href="/article/hello-hexo.html">开通博客第一天</a>
+            <a href="/article/20220004.html">开通博客第一天</a>
           </li>
         
       </ul>
