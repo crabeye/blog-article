@@ -8,17 +8,49 @@
     <author>
       <name>Bill Lee</name>
     </author>
-    <updated>2022-05-17T03:08:29.000Z</updated>
+    <updated>2022-05-20T08:33:30.000Z</updated>
     <category term="直行螃蟹" />
     <category term="Bill" />
     <category term="记录生活" />
     <category term="libiaolee" />
     <entry>
-        <id>http://blog.liq2.com/article/be00393e</id>
-        <title>JAVA多线程总结之qqq</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/be00393e"/>
-        <content type="html"></content>
-        <updated>2022-05-17T03:08:29.000Z</updated>
+        <id>http://blog.liq2.com/article/768b74a2</id>
+        <title>jsDelivr静态文件CDN加速失效之后解决方案和picGo图床基本使用</title>
+        <link rel="alternate" href="http://blog.liq2.com/article/768b74a2"/>
+        <content type="html">&lt;p&gt;屁颠屁颠用 gihub+jsDelivr 加速做 js 文件 cdn 加速和图床之后，发现国内网络访问打开不到图片，原来 jsDelivr 在去年年底不能访问了，官方声明 Unfortunately today jsDelivr unexpectedly lost its ICP license in China.&lt;br /&gt;
+&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/vyUEcWz3Hfsx6oZ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;解决方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决方案&#34;&gt;#&lt;/a&gt; 解决方案&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;全局 URL 替代&lt;/p&gt;
+&lt;p&gt;如果使用的是 npm 库，可以使用 unpkg.com 替换，如果速度慢，可以使用中国镜像 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3VucGtnLnpoaW1nLmNvbQ==&#34;&gt;unpkg.zhimg.com&lt;/span&gt;，比如原来的地址 &lt;code&gt;https://unpkg.zhimg.com/pjax@0.2.8/pjax.min.js&lt;/code&gt; ，替换为 &lt;code&gt;https://unpkg.zhimg.com/pace-js@1.0.2/pace.min.js&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;意思是如果是在开发工具里，可以全局搜索 &lt;code&gt;cdn.jsdelivr.net/npm&lt;/code&gt;  替换为 &lt;code&gt;unpkg.zhimg.com&lt;/code&gt; ；&lt;/p&gt;
+&lt;p&gt;但是&lt;strong&gt;这种方式并不是对所有的连接都有效&lt;/strong&gt;，比如： &lt;code&gt;https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js&lt;/code&gt;  被替换之后还是访问不到&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新的项目使用其他国内支持的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG5qcy5jb20v&#34;&gt;https://cdnjs.com/&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudW5wa2cuY29tLw==&#34;&gt;https://www.unpkg.com/&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYm9vdGNkbi5jbi8=&#34;&gt;https://www.bootcdn.cn/&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自己搭建服务器或者购买&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;自己搭建&lt;/p&gt;
+&lt;p&gt;对于图床服务器可以考虑自己搭建图床服务器 [一个易于搭建的图床服务器](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1JlZG5zL0ltYWdlQmVk&#34;&gt;Redns/ImageBed: 一个易于搭建的图床服务 (github.com)&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;搭建 minIO 服务器，暂时不知道是否支持 js 文件 ❓&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;购买收费服务&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <updated>2022-05-20T08:33:30.000Z</updated>
     </entry>
     <entry>
         <id>http://blog.liq2.com/article/ffae4388</id>
@@ -37,16 +69,16 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;创建过程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建过程&#34;&gt;#&lt;/a&gt; 创建过程&lt;/h2&gt;
 &lt;h3 id=&#34;创建github静态文件存放项目比如&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建github静态文件存放项目比如&#34;&gt;#&lt;/a&gt; 创建 github 静态文件存放项目，比如：&lt;/h3&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516145102758.png&#34; alt=&#34;创建项目&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/image-20220516145102758.png&#34; alt=&#34;创建项目&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;提交静态文件到1创建项目&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#提交静态文件到1创建项目&#34;&gt;#&lt;/a&gt; 提交静态文件到 #1 创建项目&lt;/h3&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516145102754.png&#34; alt=&#34;提交文件&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/image-20220516145102754.png&#34; alt=&#34;提交文件&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;获取转换文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#获取转换文件&#34;&gt;#&lt;/a&gt; 获取转换文件&lt;/h3&gt;
 &lt;p&gt;复制文件地址到 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuanNkZWxpdnIuY29tL2dpdGh1Yg==&#34;&gt;https://www.jsdelivr.com/github&lt;/span&gt; 进行地址转换， 点击 copy 获取 cdn 连接&lt;/p&gt;
 &lt;p&gt;其实这里的路径规则就是 按照&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[https://cdn.jsdelivr.net/gh/](https://link.zhihu.com/?target=https%3A//cdn.jsdelivr.net/gh/)你的用户名/你的仓库名@发布的版本号/文件路径
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;知道这个规则之后你可以自行修改路径了  🤞&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220516161211430.png&#34; alt=&#34;image-20220516161211430&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/image-20220516161211430.png&#34; alt=&#34;image-20220516161211430&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;引用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#引用&#34;&gt;#&lt;/a&gt; 引用&lt;/h3&gt;
 &lt;p&gt;在 html 或者 markdown 文件里面引用 URL  💃&lt;/p&gt;
 </content>
@@ -83,7 +115,7 @@
 &lt;p&gt;参考官方文档的例子  cmd 到文件夹之后  直接用 remark42.windows-amd64.exe 后面带配置参数就可以跑起来， &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZW1hcms0Mi5jb20vZG9jcy9nZXR0aW5nLXN0YXJ0ZWQvaW5zdGFsbGF0aW9uLw==&#34;&gt;官方文档说明&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;比如使用官方的启动例子就能运行起来：&lt;/p&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ remark42.linux-amd64 server --secret&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;12345&lt;/span&gt; --url&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;http://127.0.0.1:8080&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;运行之后你浏览器打开 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzEyNy4wLjAuMTo4MDgwL3dlYg==&#34;&gt;http://127.0.0.1:8080/web&lt;/span&gt;, 能够看到一个如下的页面，说明你已经跑起来 😄&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/image-20220515185339060.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/image-20220515185339060.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;参考启动参数，结合自身项目情况，我整理了几个可能你和我一样也可能用到的一个一个启动命令：&lt;/p&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;remark42.windows-amd64.exe server --secret&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;not4you2know --url&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;https://sub.yourdomain.com --auth.github.cid&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1107&lt;/span&gt;********9011b --auth.github.csec&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;a7665**********05741 --auth.anon --site&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;mySiteId&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;其中各个参数说明：&lt;/p&gt;
 &lt;ul&gt;
@@ -161,7 +193,7 @@
 &lt;li&gt;各种分享；&lt;/li&gt;
 &lt;li&gt;看看自己能不能坚持做一件事，我想如果我坚持，然后不时翻一翻，应该还是有好处。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/crabeye/site-asserts@master/blog/article-files/2022/05/cover_20220512.jfif&#34; alt=&#34;happy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/cover_20220512.jfif&#34; alt=&#34;happy&#34; /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;加油&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#加油&#34;&gt;#&lt;/a&gt; 加油！&lt;/h2&gt;
 </content>
         <category term="随便写写" scheme="http://blog.liq2.com/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" />
