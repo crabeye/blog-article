@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://blog.liq2.com</id>
+    <id>https://blog.liq2.com</id>
     <title>Bill Lee&#39;s Blog</title>
     <subtitle>码农的马，蟹蟹的谢</subtitle>
-    <icon>http://blog.liq2.com/images/favicon.ico</icon>
-    <link href="http://blog.liq2.com" />
+    <icon>https://blog.liq2.com/images/favicon.ico</icon>
+    <link href="https://blog.liq2.com" />
     <author>
       <name>Bill Lee</name>
     </author>
@@ -14,9 +14,9 @@
     <category term="记录生活" />
     <category term="libiaolee" />
     <entry>
-        <id>http://blog.liq2.com/article/768b74a2</id>
+        <id>https://blog.liq2.com/article/768b74a2</id>
         <title>jsDelivr静态文件CDN加速失效之后解决方案和PicGo图床基本使用</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/768b74a2"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/768b74a2"/>
         <content type="html">&lt;p&gt;屁颠屁颠用 gihub+jsDelivr 加速做 js 文件 cdn 加速和图床之后，发现国内网络访问打开不到图片，原来 jsDelivr 在去年年底不能访问了，官方声明 Unfortunately today jsDelivr unexpectedly lost its ICP license in China.&lt;br /&gt;
 &lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/vyUEcWz3Hfsx6oZ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;虽然说看起来是给创建博客的个人和小企业来说是个坏事，但是对于整个国家宏观来说却也可以理解，国人必须要自己能拥有网络内容主动权嘛，话说现在形势还这么紧张不是；&lt;/p&gt;
@@ -77,9 +77,9 @@
         <updated>2022-05-20T08:33:30.000Z</updated>
     </entry>
     <entry>
-        <id>http://blog.liq2.com/article/ffae4388</id>
+        <id>https://blog.liq2.com/article/ffae4388</id>
         <title>用jsDelivr和Github做免费的CDN加速</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/ffae4388"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/ffae4388"/>
         <content type="html">&lt;h2 id=&#34;cdn解释&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#cdn解释&#34;&gt;#&lt;/a&gt; CDN 解释&lt;/h2&gt;
 &lt;p&gt;CDN 是内容分发网络（Content Delivery Network）的首字母简写，是指一组分布在不同地理位置的服务器，协同工作以提供互联网内容的快速交付。&lt;/p&gt;
 &lt;p&gt;CDN 允许快速传输加载互联网内容所需的资源，包括 HTML 页面、javascript 文件、样式表、图像和视频。 CDN 服务已得到不断普及。如今，大多数 web 流量都通过 CDN 提供服务，包括来自 Facebook、Netflix 和亚马逊等主要网站的流量。&lt;/p&gt;
@@ -109,9 +109,9 @@
         <updated>2022-05-16T04:13:50.000Z</updated>
     </entry>
     <entry>
-        <id>http://blog.liq2.com/article/7d501b47</id>
+        <id>https://blog.liq2.com/article/7d501b47</id>
         <title>Hexo的aomori主题使用Remark42搭建文章评论功能</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/7d501b47"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/7d501b47"/>
         <content type="html">&lt;p&gt;开始求生欲望极强的声明一下，本人刚刚开始玩 Hexo 几天，所以都是以我现在的水平表述操作过程，说得不对还请多多指正。&lt;/p&gt;
 &lt;h2 id=&#34;环境说明&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#环境说明&#34;&gt;#&lt;/a&gt; 环境说明&lt;/h2&gt;
 &lt;ol&gt;
@@ -175,40 +175,40 @@
 &lt;h3 id=&#34;remrk客户端显示不了登陆选项&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#remrk客户端显示不了登陆选项&#34;&gt;#&lt;/a&gt; Remrk 客户端显示不了登陆选项&lt;/h3&gt;
 &lt;p&gt;Remark42 默认没有配置任何登陆选项，请至少打开 --scret.anno 以支持匿名评论，其他的认证方式情参考官网说明&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZW1hcms0Mi5jb20vZG9jcy9jb25maWd1cmF0aW9uL2F1dGhvcml6YXRpb24v&#34;&gt; Remark42 认证权限说明&lt;/span&gt;&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="http://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
-        <category term="Hexo学习" scheme="http://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/Hexo%E5%AD%A6%E4%B9%A0/" />
-        <category term="Hexo" scheme="http://blog.liq2.com/tags/Hexo/" />
-        <category term="工具使用" scheme="http://blog.liq2.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" />
+        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="Hexo学习" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/Hexo%E5%AD%A6%E4%B9%A0/" />
+        <category term="Hexo" scheme="https://blog.liq2.com/tags/Hexo/" />
+        <category term="工具使用" scheme="https://blog.liq2.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" />
         <updated>2022-05-15T05:32:25.000Z</updated>
     </entry>
     <entry>
-        <id>http://blog.liq2.com/article/3aeffd05</id>
+        <id>https://blog.liq2.com/article/3aeffd05</id>
         <title>Alpine和eleventy搭配的基本使用</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/3aeffd05"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/3aeffd05"/>
         <content type="html">&lt;p&gt;同理，先占位， 后面会更新&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="http://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
-        <category term="Alpine" scheme="http://blog.liq2.com/tags/Alpine/" />
-        <category term="11ty" scheme="http://blog.liq2.com/tags/11ty/" />
-        <category term="eleventy" scheme="http://blog.liq2.com/tags/eleventy/" />
+        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="Alpine" scheme="https://blog.liq2.com/tags/Alpine/" />
+        <category term="11ty" scheme="https://blog.liq2.com/tags/11ty/" />
+        <category term="eleventy" scheme="https://blog.liq2.com/tags/eleventy/" />
         <updated>2022-05-13T07:31:26.000Z</updated>
     </entry>
     <entry>
-        <id>http://blog.liq2.com/article/955aeda8</id>
+        <id>https://blog.liq2.com/article/955aeda8</id>
         <title>JAVA多线程总结之一</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/955aeda8"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/955aeda8"/>
         <content type="html">&lt;p&gt;这里还没有任何内容，先占个位！&lt;/p&gt;
 </content>
-        <category term="Java后端" scheme="http://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
-        <category term="多线程" scheme="http://blog.liq2.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
-        <category term="线程池" scheme="http://blog.liq2.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" />
-        <category term="JUC" scheme="http://blog.liq2.com/tags/JUC/" />
+        <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+        <category term="多线程" scheme="https://blog.liq2.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
+        <category term="线程池" scheme="https://blog.liq2.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" />
+        <category term="JUC" scheme="https://blog.liq2.com/tags/JUC/" />
         <updated>2022-05-13T05:49:45.000Z</updated>
     </entry>
     <entry>
-        <id>http://blog.liq2.com/article/52cf48bf</id>
+        <id>https://blog.liq2.com/article/52cf48bf</id>
         <title>开通博客第一天</title>
-        <link rel="alternate" href="http://blog.liq2.com/article/52cf48bf"/>
+        <link rel="alternate" href="https://blog.liq2.com/article/52cf48bf"/>
         <content type="html">&lt;p&gt;喜大普奔，终于搞定一个低成本的放博客的地方，并且实实在在的跑了起来！&lt;/p&gt;
 &lt;h2 id=&#34;博客目的&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#博客目的&#34;&gt;#&lt;/a&gt; 博客目的&lt;/h2&gt;
 &lt;ol&gt;
@@ -220,9 +220,9 @@
 &lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/cover_20220512.jfif&#34; alt=&#34;happy&#34; /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;加油&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#加油&#34;&gt;#&lt;/a&gt; 加油！&lt;/h2&gt;
 </content>
-        <category term="随便写写" scheme="http://blog.liq2.com/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" />
-        <category term="心情记录" scheme="http://blog.liq2.com/tags/%E5%BF%83%E6%83%85%E8%AE%B0%E5%BD%95/" />
-        <category term="胡言乱语" scheme="http://blog.liq2.com/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" />
+        <category term="随便写写" scheme="https://blog.liq2.com/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" />
+        <category term="心情记录" scheme="https://blog.liq2.com/tags/%E5%BF%83%E6%83%85%E8%AE%B0%E5%BD%95/" />
+        <category term="胡言乱语" scheme="https://blog.liq2.com/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" />
         <updated>2022-05-12T13:02:40.000Z</updated>
     </entry>
 </feed>
