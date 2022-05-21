@@ -20,7 +20,7 @@
         <content type="html">&lt;p&gt;屁颠屁颠用 gihub+jsDelivr 加速做 js 文件 cdn 加速和图床之后，发现国内网络访问打开不到图片，原来 jsDelivr 在去年年底不能访问了，官方声明 Unfortunately today jsDelivr unexpectedly lost its ICP license in China.&lt;br /&gt;
 &lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/vyUEcWz3Hfsx6oZ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;虽然说看起来是给创建博客的个人和小企业来说是个坏事，但是对于整个国家宏观来说却也可以理解，国人必须要自己能拥有网络内容主动权嘛，话说现在形势还这么紧张不是；&lt;/p&gt;
-&lt;h3 id=&#34;全局url替代&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#全局url替代&#34;&gt;#&lt;/a&gt; 全局 URL 替代&lt;/h3&gt;
+&lt;h2 id=&#34;全局url替代&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#全局url替代&#34;&gt;#&lt;/a&gt; 全局 URL 替代&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;如果使用的是 npm 库，可以使用 unpkg.com 替换&lt;/p&gt;
