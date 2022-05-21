@@ -15,28 +15,30 @@
     <category term="libiaolee" />
     <entry>
         <id>http://blog.liq2.com/article/768b74a2</id>
-        <title>jsDelivr静态文件CDN加速失效之后解决方案和picGo图床基本使用</title>
+        <title>jsDelivr静态文件CDN加速失效之后解决方案和PicGo图床基本使用</title>
         <link rel="alternate" href="http://blog.liq2.com/article/768b74a2"/>
         <content type="html">&lt;p&gt;屁颠屁颠用 gihub+jsDelivr 加速做 js 文件 cdn 加速和图床之后，发现国内网络访问打开不到图片，原来 jsDelivr 在去年年底不能访问了，官方声明 Unfortunately today jsDelivr unexpectedly lost its ICP license in China.&lt;br /&gt;
 &lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/vyUEcWz3Hfsx6oZ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;解决方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决方案&#34;&gt;#&lt;/a&gt; 解决方案&lt;/h2&gt;
-&lt;ol&gt;
+&lt;p&gt;虽然说看起来是给创建博客的个人和小企业来说是个坏事，但是对于整个国家宏观来说却也可以理解，国人必须要自己能拥有网络内容主动权嘛，话说现在形势还这么紧张不是；&lt;/p&gt;
+&lt;h3 id=&#34;全局url替代&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#全局url替代&#34;&gt;#&lt;/a&gt; 全局 URL 替代&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;全局 URL 替代&lt;/p&gt;
-&lt;p&gt;如果使用的是 npm 库，可以使用 unpkg.com 替换，如果速度慢，可以使用中国镜像 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3VucGtnLnpoaW1nLmNvbQ==&#34;&gt;unpkg.zhimg.com&lt;/span&gt;，比如原来的地址 &lt;code&gt;https://unpkg.zhimg.com/pjax@0.2.8/pjax.min.js&lt;/code&gt; ，替换为 &lt;code&gt;https://unpkg.zhimg.com/pace-js@1.0.2/pace.min.js&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;意思是如果是在开发工具里，可以全局搜索 &lt;code&gt;cdn.jsdelivr.net/npm&lt;/code&gt;  替换为 &lt;code&gt;unpkg.zhimg.com&lt;/code&gt; ；&lt;/p&gt;
-&lt;p&gt;但是&lt;strong&gt;这种方式并不是对所有的连接都有效&lt;/strong&gt;，比如： &lt;code&gt;https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js&lt;/code&gt;  被替换之后还是访问不到&lt;/p&gt;
+&lt;p&gt;如果使用的是 npm 库，可以使用 unpkg.com 替换&lt;/p&gt;
+&lt;p&gt;eg:  &lt;code&gt;https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js&lt;/code&gt; ，替换为 &lt;code&gt;https://unpkg.com/pace-js@1.0.2/pace.min.js&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;新的项目使用其他国内支持的&lt;/p&gt;
+&lt;p&gt;上面方式慢，可以使用中国镜像 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3VucGtnLnpoaW1nLmNvbQ==&#34;&gt;unpkg.zhimg.com&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;eg:  &lt;code&gt;https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js&lt;/code&gt; ，替换为 &lt;code&gt;https://unpkg.zhimg.com/pace-js@1.0.2/pace.min.js&lt;/code&gt;  但是&lt;strong&gt;这种方式并不是对所有的连接都有效&lt;/strong&gt;，比如： &lt;code&gt;https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js&lt;/code&gt;  被替换之后还是访问不到。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;综上，如果是在开发工具里，可以全局搜索 &lt;code&gt;cdn.jsdelivr.net/npm&lt;/code&gt;  替换为 &lt;code&gt;unpkg.com&lt;/code&gt;  或者 &lt;code&gt;unpkg.zhimg.com&lt;/code&gt; ，但是仅限 npm 库，&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1jZG4teGk5ZGs3MmQuanNkZWxpdnIubmV0L2NvbWJpbmUlRTUlOEElOUYlRTglODMlQkQlRTUlOEQlQjQlRTUlQjklQjYlRTQlQjglOEQlRTglQjUlQjclRTQlQkQlOUMlRTclOTQlQTg=&#34;&gt;对于 cdn.jsdelivr.net/combine 功能却并不起作用&lt;/span&gt; 😒 ；&lt;/p&gt;
+&lt;h3 id=&#34;新的项目使用其他国内支持的&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#新的项目使用其他国内支持的&#34;&gt;#&lt;/a&gt; 新的项目使用其他国内支持的&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG5qcy5jb20v&#34;&gt;https://cdnjs.com/&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudW5wa2cuY29tLw==&#34;&gt;https://www.unpkg.com/&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYm9vdGNkbi5jbi8=&#34;&gt;https://www.bootcdn.cn/&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;自己搭建服务器或者购买&lt;/p&gt;
+&lt;h3 id=&#34;自己搭建服务器或者购买&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自己搭建服务器或者购买&#34;&gt;#&lt;/a&gt; 自己搭建服务器或者购买&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;自己搭建&lt;/p&gt;
@@ -45,10 +47,32 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;购买收费服务&lt;/p&gt;
+&lt;p&gt;比如购买某里，某迅的 CDN 加速，填写没有免费的午餐，交点钱买个安心；&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;picgo图床的基本使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#picgo图床的基本使用&#34;&gt;#&lt;/a&gt; PicGo 图床的基本使用&lt;/h2&gt;
+&lt;h3 id=&#34;软件下载和安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#软件下载和安装&#34;&gt;#&lt;/a&gt; 软件下载和安装&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dv&#34;&gt;PicGo&lt;/span&gt; 是一个 github 上开源项目，发布的版本可以点&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dvL3JlbGVhc2Vz&#34;&gt;这里&lt;/span&gt;下载，写文章的时候的最新稳定版本是 2.3.0，安装成功后如图；&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts//blog/article-files/2022/05/20220521094526.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;插件安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插件安装&#34;&gt;#&lt;/a&gt; 插件安装&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1zbS1wdjJjbzU0Y2Z6aXdpZDFyZWJ1NGF6d2lldDFjZHZncTUxYnVqdS5tcw==&#34;&gt;上面安装的版本默认支持 sm.ms&lt;/span&gt;, 腾讯云 cos，又拍云，github，阿里云 oss 等， 但是想要支持 gitee 和其他如 imgtp 上传的话需要点击插件设置安装插件之后才能使用，&lt;/p&gt;
+&lt;p&gt;点击插件设置可以进行关键字搜索进行安装，有时候不知道有哪些插件可用，所以我更喜欢点上面的购物袋进行插件列表查看，或者点&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1BpY0dvL0F3ZXNvbWUtUGljR28=&#34;&gt;这里&lt;/span&gt;直接传送；然后看看哪些图床可以使用。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts//blog/article-files/2022/05/20220521095325.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;账号配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#账号配置&#34;&gt;#&lt;/a&gt; 账号配置&lt;/h3&gt;
+&lt;p&gt;根据各个平台要求，结合各个插件使用进行配置，就能完成图床的配置；&lt;/p&gt;
+&lt;p&gt;说下我选择图床的考虑因素：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;要有内容自主权&lt;/p&gt;
+&lt;p&gt;现在免费的和付费的图床这么多，自然是要考虑要一个自己控制内容的，我作为写博客使用的图床，一般都是会根据时间进行放置，所以必要能按照我希望的格式和目录去放置，大致看了下除了七牛，腾讯云 COS，阿里云 OSS，github 这些大厂提供的服务可以存放到指定的目录，但是都是有容量限制要不就是要米🔓&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;备份功能和图床切换方便&lt;/p&gt;
+&lt;p&gt;万一你使用的图床挂了呢，必须是要能整个图床内容图片整体备份出来，按照一定的格式切换到另外一个图床继续浪里个浪啊；&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;文件上传和链接获取&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文件上传和链接获取&#34;&gt;#&lt;/a&gt; 文件上传和链接获取&lt;/h3&gt;
+&lt;p&gt;上传和链接获取这个应该是用过电脑一年以上的人应该都是了的，应该不用多说了，直接上传剪贴板的图片功能也支持微信等一些工具的截图，💃真是非常的 nice 啊！&lt;/p&gt;
 </content>
         <updated>2022-05-20T08:33:30.000Z</updated>
     </entry>
