@@ -10,16 +10,76 @@
         </author>
         <description>好记性不如烂笔头</description>
         <language>zh-CN</language>
-        <pubDate>Fri, 20 May 2022 16:33:30 +0800</pubDate>
-        <lastBuildDate>Fri, 20 May 2022 16:33:30 +0800</lastBuildDate>
+        <pubDate>Wed, 25 May 2022 08:32:01 +0800</pubDate>
+        <lastBuildDate>Wed, 25 May 2022 08:32:01 +0800</lastBuildDate>
         <category term="直行螃蟹" />
         <category term="Bill" />
         <category term="记录生活" />
         <category term="libiaolee" />
         <item>
+            <guid isPermalink="true">https://blog.liq2.com/article/7654e55b</guid>
+            <title>各个管理端框架比较参考</title>
+            <link>https://blog.liq2.com/article/7654e55b</link>
+            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="UI框架" scheme="https://blog.liq2.com/tags/UI%E6%A1%86%E6%9E%B6/" />
+            <pubDate>Wed, 25 May 2022 08:32:01 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;市面上越来越多的好看的管理端框架，真是可谓眼花缭乱，对于做主要做后端的人来说，真是个好事情，拿下代码来稍作学习便可以开发管理系统了！本文就分享一些体验过的框架。&lt;/p&gt;
+&lt;p&gt;感觉目前 UI 框架整体分三类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注重视觉和生态的，比如 ant-design, acro-design 等；&lt;/li&gt;
+&lt;li&gt;注重组件开发的，如 element-ui, vant, naive-ui 等；&lt;/li&gt;
+&lt;li&gt;注重开箱即用的，这种方式基本上是在上面的两种框架的基础上，自己通过整合路由、权限和一些常用实现，同时对性能和美观方面进行优化的前端框架，比如 antd-admin, naive-ui-admin,  vue-admin-better 等；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;naive-ui&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#naive-ui&#34;&gt;#&lt;/a&gt; naive-ui&lt;/h2&gt;
+&lt;p&gt;这个目前兴趣比较大的一个框架，因为感觉跟现在的项目要求比较契合，界面也基本 OK&lt;/p&gt;
+&lt;p&gt;官网 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubmFpdmV1aS5jb20v&#34;&gt;点这里&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;文档：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubmFpdmV1aS5jb20vemgtQ04vb3MtdGhlbWUvZG9jcy9pbnRyb2R1Y3Rpb24=&#34;&gt;Naive UI - Naive UI&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;组件说明：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubmFpdmV1aS5jb20vemgtQ04vb3MtdGhlbWUvY29tcG9uZW50cy9idXR0b24=&#34;&gt; Naive UI&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525093636.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;soybean-admin&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#soybean-admin&#34;&gt;#&lt;/a&gt; soybean-admin&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hvbmdodWFuZ2RjL3NveWJlYW4tYWRtaW4=&#34;&gt;基于 Vite + Vue3 + NaiveUI + TypeScript 的漂亮清新的中后台管理模版 &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zb3liZWFuLnByby8=&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525093923.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;naive-ui-admin&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#naive-ui-admin&#34;&gt;#&lt;/a&gt; naive-ui-admin&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2pla2lwL25haXZlLXVpLWFkbWlu&#34;&gt;Naive Ui Admin 基于 vue3,vite2,TypeScript 的中后台解决方案 &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9uYWl2ZS11aS1hZG1pbi52ZXJjZWwuYXBw&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525094131.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这个还支持其他几个版本，貌似除了 v1 版本之外收费，naive 版本的 v2 个人觉得界面还可以，但是价钱对比没有什么优势&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525094837.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;admin-work&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#admin-work&#34;&gt;#&lt;/a&gt; admin-work&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3FpbmdxaW5neHVhbi9hZG1pbi13b3Jr&#34;&gt;一款免费开源、功能强大、方便易用、漂亮的中后台管理系统模板&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2F3LnZ1ZWFkbWlud29yay5jb20v&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525100846.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;​	虽然也有收费版，但是我居然觉得免费版要比收费的要好看 😂&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525101100.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ant-design&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ant-design&#34;&gt;#&lt;/a&gt; ant-design&lt;/h2&gt;
+&lt;p&gt;这个目前官方只有 React 版本，Vue 版本由个人开发维护&lt;/p&gt;
+&lt;p&gt;官方网址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hbnQuZGVzaWduL2luZGV4LWNu&#34;&gt;Ant Design - 一套企业级 UI 设计语言和 React 组件库&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ant-design-pro&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ant-design-pro&#34;&gt;#&lt;/a&gt; ant-design-pro&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2FudC1kZXNpZ24vYW50LWRlc2lnbi1wcm8=&#34;&gt;Use Ant Design like a Pro&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wcmV2aWV3LnByby5hbnQuZGVzaWdu&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525103829.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;antd-admin&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#antd-admin&#34;&gt;#&lt;/a&gt; antd-admin&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3p1aWlkZWEvYW50ZC1hZG1pbg==&#34;&gt;zuiidea/antd-admin: An excellent front-end solution for enterprise applications built upon Ant Design and UmiJS (github.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hbnRkLWFkbWluLnp1aWlkZWEuY29tLw==&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220525113134.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;acro-design&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#acro-design&#34;&gt;#&lt;/a&gt; acro-design&lt;/h2&gt;
+&lt;p&gt;这个是字节跳动最近两年才开源出来的视觉设计和生态框架，和 semi 同属一家公司还几乎同时开源 😂, 居然还同时被指抄袭 antd, 它有 React 和 Vue 两个版本，官方提供 arco-pro 基础开发框架&lt;/p&gt;
+&lt;p&gt;官网： &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hcmNvLmRlc2lnbi8=&#34;&gt;Arco Design - 企业级产品的完整设计和开发解决方案&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;arco-design-pro-vue&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#arco-design-pro-vue&#34;&gt;#&lt;/a&gt; arco-design-pro-vue&lt;/h3&gt;
+&lt;p&gt;官方提供的框架&lt;/p&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2FyY28tZGVzaWduL2FyY28tZGVzaWduLXByby12dWU=&#34;&gt;An out-of-the-box solution to quickly build enterprise-level applications based on Arco Design&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly92dWUtcHJvLmFyY28uZGVzaWduLw==&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;E:%5Cliq2_src%5Chexo-blog%5Csite-asserts%5Cblog%5Carticle-files%5C2022%5C05%5Cimage-20220525115320506.png&#34; alt=&#34;image-20220525115320506&#34; /&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">https://blog.liq2.com/article/768b74a2</guid>
             <title>jsDelivr静态文件CDN加速失效之后解决方案和PicGo图床基本使用</title>
             <link>https://blog.liq2.com/article/768b74a2</link>
+            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
+            <category term="PicGo图床" scheme="https://blog.liq2.com/tags/PicGo%E5%9B%BE%E5%BA%8A/" />
             <pubDate>Fri, 20 May 2022 16:33:30 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;屁颠屁颠用 gihub+jsDelivr 加速做 js 文件 cdn 加速和图床之后，发现国内网络访问打开不到图片，原来 jsDelivr 在去年年底不能访问了，官方声明 Unfortunately today jsDelivr unexpectedly lost its ICP license in China.&lt;br /&gt;
 &lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/vyUEcWz3Hfsx6oZ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -83,6 +143,9 @@
             <guid isPermalink="true">https://blog.liq2.com/article/ffae4388</guid>
             <title>用jsDelivr和Github做免费的CDN加速</title>
             <link>https://blog.liq2.com/article/ffae4388</link>
+            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
+            <category term="CDN加速" scheme="https://blog.liq2.com/tags/CDN%E5%8A%A0%E9%80%9F/" />
             <pubDate>Mon, 16 May 2022 12:13:50 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;cdn解释&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#cdn解释&#34;&gt;#&lt;/a&gt; CDN 解释&lt;/h2&gt;
 &lt;p&gt;CDN 是内容分发网络（Content Delivery Network）的首字母简写，是指一组分布在不同地理位置的服务器，协同工作以提供互联网内容的快速交付。&lt;/p&gt;
