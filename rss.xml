@@ -198,9 +198,15 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;购买收费服务&lt;/p&gt;
-&lt;p&gt;比如购买某里，某迅的 CDN 加速，填写没有免费的午餐，交点钱买个安心；&lt;/p&gt;
+&lt;p&gt;比如购买某里，某迅的 CDN 加速，天下没有免费的午餐，交点钱买个安心；&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;-------------------------------2022-06-06 - 更新分割线 start-------------------------------&lt;/p&gt;
+&lt;h3 id=&#34;使用临时可用的连接地址&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用临时可用的连接地址&#34;&gt;#&lt;/a&gt; 使用临时可用的连接地址&lt;/h3&gt;
+&lt;p&gt;根据 github 上面的 jsdelivr 项目的 issue 提示， 居然有可以用的的域名&lt;br /&gt;
+&lt;img data-src=&#34;https://crabeye.github.io/site-asserts/blog/article-files/2022/05/20220609141107.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+如上图所示，我们可以根据上面的域名，进行对使用的项目进行由 &lt;code&gt;cdn.jsdelivr.net&lt;/code&gt;  到 &lt;code&gt;fastly.jsdelivr.net&lt;/code&gt;  全局替换， 这个方法应该适用于 hexo 的 shoka 主题国内不可用问题&lt;/p&gt;
+&lt;p&gt;-------------------------------2022-06-06 - 更新分割线 end-------------------------------&lt;/p&gt;
 &lt;h2 id=&#34;picgo图床的基本使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#picgo图床的基本使用&#34;&gt;#&lt;/a&gt; PicGo 图床的基本使用&lt;/h2&gt;
 &lt;h3 id=&#34;软件下载和安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#软件下载和安装&#34;&gt;#&lt;/a&gt; 软件下载和安装&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dv&#34;&gt;PicGo&lt;/span&gt; 是一个 github 上开源项目，发布的版本可以点&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dvL3JlbGVhc2Vz&#34;&gt;这里&lt;/span&gt;下载，写文章的时候的最新稳定版本是 2.3.0，安装成功后如图；&lt;/p&gt;
