@@ -10,17 +10,357 @@
         </author>
         <description>好记性不如烂笔头</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 21 Jun 2022 18:18:03 +0800</pubDate>
-        <lastBuildDate>Tue, 21 Jun 2022 18:18:03 +0800</lastBuildDate>
+        <pubDate>Wed, 22 Jun 2022 09:07:23 +0800</pubDate>
+        <lastBuildDate>Wed, 22 Jun 2022 09:07:23 +0800</lastBuildDate>
         <category term="直行螃蟹" />
         <category term="Bill" />
         <category term="记录生活" />
         <category term="libiaolee" />
         <item>
+            <guid isPermalink="true">https://blog.liq2.com/article/62ceeeec</guid>
+            <title>分布式事务解决方案</title>
+            <link>https://blog.liq2.com/article/62ceeeec</link>
+            <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+            <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
+            <category term="分布式事务" scheme="https://blog.liq2.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
+            <pubDate>Wed, 22 Jun 2022 09:07:23 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;事务，大多时候我们是说在单体应用情况下，把多个操作整体执行的能力，分布式事务，就是在多个应用甚至多个数据源的情况下，保证操作的事务特性，在开始之前先回顾一下事务的相关基础知识&lt;/p&gt;
+&lt;h1 id=&#34;一-基础概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-基础概念&#34;&gt;#&lt;/a&gt; 一、基础概念&lt;/h1&gt;
+&lt;p&gt;举一个例子，我们有一个网上商城平台，用户下单购买商品，商品的库存减少，同时产生一条订单记录，订单上这个商品的数量就是商品库存的数量，事务在这个例子上表现就是在下单前和下单之后，商品的总数量是不变的。&lt;/p&gt;
+&lt;p&gt;我们以这个例子来说明一下事务和分布式事务：&lt;/p&gt;
+&lt;h2 id=&#34;1事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1事务&#34;&gt;#&lt;/a&gt; 1. 事务&lt;/h2&gt;
+&lt;p&gt;上面例子涉及到两个数据库操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在库存表减少商品的库存数量&lt;/li&gt;
+&lt;li&gt;新增一个订单记录订单购买的商品数量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两个操作必须作为一个整体执行，要么两个都成功，要么两个都执行失败，这就是事务了，事务具有 ACID 四个基本特性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Atomicity（原子性）&lt;/strong&gt;：一个事务中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复到事务开始前的状态，就像这个事务从来没有执行过一样。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Consistency（一致性）&lt;/strong&gt;：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。完整性包括外键约束、应用定义的等约束不会被破坏。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Isolation（隔离性）&lt;/strong&gt;：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。&lt;/p&gt;
+&lt;p&gt;四种隔离级别比较&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;脏读&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;不可重复读&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;幻读&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;读未提交&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;读已提交&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;可重复读&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;td&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;串行化&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;td&gt;不会&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;串行化是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻读&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Durability（持久性）&lt;/strong&gt;：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2分布式事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2分布式事务&#34;&gt;#&lt;/a&gt; 2. 分布式事务&lt;/h2&gt;
+&lt;p&gt;分布式事务就是指事务的发起者、资源及资源管理器和事务协调者分别位于分布式系统的不同节点之上，由于分布式应用可能部署在不一样的机器上，所以一般都需要一个事务协调者对事务进行统一调度，来控制事务的提交和撤回，本质上来说，分布式事务就是为了保证在分布式场景下，数据操作的正确执行。&lt;/p&gt;
+&lt;p&gt;根据 BASE 理论，分布式事务需要在数据一致性和实时性根据业务需要做出必要协调，基本思想包含以下三种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;B&lt;/strong&gt;asic &lt;strong&gt;A&lt;/strong&gt;vailability 基本业务可用性&lt;/p&gt;
+&lt;p&gt;分布式系统再出现故障时，允许损失部分可用功能，保证核心功能可用，如电商网站交易付款出现问题了，商品浏览仍然可以访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;S&lt;/strong&gt;oft state 柔性事务&lt;/p&gt;
+&lt;p&gt;由于不要求强一致性，所以 BASE 系统中允许存在中间状态（也叫软状态），这个状态不影响系统可用性，如订单的 “支付中”，“数据同步中” 等状态，待数据最终一致后，状态改为 “成功” 状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;E&lt;/strong&gt;ventual consistency 最终一致性&lt;/p&gt;
+&lt;p&gt;是指经过一段时间后，所有数据都将达到一致。如订单中的 “支付中” 状态，最终会变为 “支付成功” 或 “支付失败”，使订单状态与实际交易结果达成一致，但需要一定的延迟等待&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然，分布式事务也遵循 ACID 基本特性，但是在一致性和隔离性方面允许在实时方面做出一定让步&lt;/p&gt;
+&lt;h1 id=&#34;二-分布式事务解决方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-分布式事务解决方案&#34;&gt;#&lt;/a&gt; 二、分布式事务解决方案&lt;/h1&gt;
+&lt;p&gt;根据现有的分布式理论和现有的分布式框架，可以归纳以下几种解决方案&lt;/p&gt;
+&lt;h2 id=&#34;1两阶段提交-two-phase-commit-又称-xc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1两阶段提交-two-phase-commit-又称-xc&#34;&gt;#&lt;/a&gt; 1. 两阶段提交 (Two Phase Commit, 又称 XC)&lt;/h2&gt;
+&lt;p&gt;二阶段提交 (Two-phaseCommit) 是指，在计算机网络以及数据库领域内，为了使基于分布式系统架构下的所有节点在进行事务提交时&lt;strong&gt;保持一致性&lt;/strong&gt;而设计的一种算法 (Algorithm)。通常，二阶段提交也被称为是一种协议 (Protocol))。&lt;strong&gt;当一个事务跨越多个节点时&lt;/strong&gt;，&lt;strong&gt;为了保持事务的 ACID 特性&lt;/strong&gt;，需要&lt;strong&gt;引入一个作为协调者的组件 TM (Transaction Manage)&lt;/strong&gt; 来统一掌控所有节点 (称作参与者或者资源管理者&lt;strong&gt; Resource Manage&lt;/strong&gt;) 的操作结果并最终指示这些节点是否要把操作结果进行真正的提交 (比如将更新后的数据写入磁盘等等)。&lt;/p&gt;
+&lt;h3 id=&#34;a两阶段说明&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a两阶段说明&#34;&gt;#&lt;/a&gt; a. 两阶段说明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;投票阶段 (Voting Phase 又叫准备阶段)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个阶段由主程序进行 TM 的创建，完成所有 RM 在 TM 上的注册之后完成以下三个过程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;协调者的询问 下图 1 步骤&lt;/li&gt;
+&lt;li&gt;资源管理者的事务执行 下图 1.1&lt;/li&gt;
+&lt;li&gt;资源管理者反馈执行信息 下图 1.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;提交阶段 (Commit Phase 又叫执行阶段)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	步骤根据准备阶段提交的通知，进行提交或者回滚处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果所有 RM 都成功执行，则通知所有节点进行事务提交&lt;/li&gt;
+&lt;li&gt;反之有一个或多个 RM 执行失败，则通知所有节点进行回滚操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sequence&#34;&gt;  事务协调者TM-&amp;gt;资源管理者RM: 1.询问各个资源管理者是否可以正常执行
+  资源管理者RM-&amp;gt;资源管理者RM: 1.1 执行事务但不提交
+  资源管理者RM--&amp;gt;事务协调者TM: 1.2 所有参与者都能成功执行事务
+  事务协调者TM-&amp;gt;资源管理者RM: 2.向所有通知者发送提交通知
+  资源管理者RM-&amp;gt;资源管理者RM: 2.1 提交事务，释放资源
+  资源管理者RM--&amp;gt;事务协调者TM: 2.2 反馈事务执行结果
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1）协调者节点向所有参与者节点发出” 正式提交 (commit)” 的请求。&lt;br /&gt;
+2）参与者节点正式完成操作，并释放在整个事务期间内占用的资源。&lt;br /&gt;
+3）参与者节点向协调者节点发送” 完成” 消息。&lt;br /&gt;
+4）协调者节点受到所有参与者节点反馈的” 完成” 消息后，完成事务。&lt;/p&gt;
+&lt;p&gt;上图为了表达两阶段的过程，简化实际的步骤，去除了主程序创建 TM 的操作和 RM 注册到 TM 的操作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;b两阶段提交的特点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#b两阶段提交的特点&#34;&gt;#&lt;/a&gt; b. 两阶段提交的特点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;简单易理解，开发较容易&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对资源进行了长时间的锁定，并发度低&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;单点故障问题&lt;/p&gt;
+&lt;p&gt;由于协调者的重要性，&lt;strong&gt;一旦协调者发生故障。参与者会一直阻塞下去。&lt;/strong&gt;&lt;br /&gt;
+尤其在第二阶段，协调者发生故障，那么所有的参与者还都处于&lt;strong&gt;锁定事务资源的状态中&lt;/strong&gt;，而无法继续完成事务操作&lt;/p&gt;
+&lt;p&gt;【协调者发出 Commit 消息&lt;strong&gt;之前&lt;/strong&gt;宕机的情况】&lt;br /&gt;
+（如果是协调者挂掉，可以重新选举一个协调者，但是&lt;strong&gt;无法解决因为协调者宕机导致的参与者处于阻塞状态的问题&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据不一致&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在二阶段提交的&lt;strong&gt;阶段二中&lt;/strong&gt;，当协调者向参与者发送 commit 请求之后，发生了局部网络异常或者在发送 commit 请求过程中协调者发生了故障，这回导致只有一部分参与者接受到了 commit 请求。而在这部分参与者接到 commit 请求之后就会执行 commit 操作。但是其他部分未接到 commit 请求的机器则无法执行事务提交。于是整个分布式系统便出现了数据不一致性的现象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2三阶段提交three-phase-commit&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2三阶段提交three-phase-commit&#34;&gt;#&lt;/a&gt; 2. 三阶段提交 (Three Phase Commit)&lt;/h2&gt;
+&lt;p&gt;由于二阶段提交存在着诸如&lt;strong&gt;同步阻塞、单点问题、脑裂&lt;/strong&gt;等缺陷，所以，研究者们在二阶段提交的基础上做了改进，提出了三阶段提交&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;三阶段提交（Three-phase commit），也叫三阶段提交协议（Three-phase commit protocol），是二阶段提交（2PC）的改进版本。与两阶段不同的是加入了两个不同点&lt;/p&gt;
+&lt;p&gt;1、引入&lt;strong&gt;超时机制&lt;/strong&gt;。同时在协调者和参与者中都引入超时机制。&lt;br /&gt;
+2、在第一阶段和第二阶段中插入一个 ** 准备阶段，** 保证了在最后提交阶段之前各参与节点状态的一致。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;a三阶段定义&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a三阶段定义&#34;&gt;#&lt;/a&gt; a. 三阶段定义&lt;/h3&gt;
+&lt;p&gt;三阶段其实就是把两阶段的投票阶段一分为二，于是有了以下三阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CanCommit 阶段&lt;/li&gt;
+&lt;li&gt;PreCommit 阶段&lt;/li&gt;
+&lt;li&gt;DoCommit 阶段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sequence&#34;&gt;TM-&amp;gt;RM:第一阶段：canCommit
+RM-&amp;gt;RM:检查时候能执行事务
+RM--&amp;gt;TM: yes
+TM-&amp;gt;RM:第二阶段：preCommit
+RM-&amp;gt;RM:执行事务操作，将undo和redo信息记录到事务日志
+RM--&amp;gt;TM:Ack
+TM-&amp;gt;RM:第三阶段：doCommit
+RM-&amp;gt;RM:提交事务
+RM--&amp;gt;TM:commited
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为什么要把投票阶段一分为二？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设有 1 个协调者，9 个参与者。其中有一个参与者不具备执行该事务的能力。&lt;/strong&gt;&lt;br /&gt;
+协调者发出 prepare 消息之后，其余参与者都将资源锁住，执行事务，写入 undo 和 redo 日志。&lt;br /&gt;
+协调者收到相应之后，发现有一个参与者不能参与。所以，又出一个 roolback 消息。其余 8 个参与者，又对消息进行回滚。这样子，是不是做了很多无用功？&lt;br /&gt;
+所以 **，** 引入 can-Commit 阶段，&lt;strong&gt;主要是为了在预执行之前，保证所有参与者都具备可执行条件，从而减少资源浪费。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;b具体执行过程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#b具体执行过程&#34;&gt;#&lt;/a&gt; b. 具体执行过程&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CanCommit 阶段&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3PC 的 CanCommit 阶段其实和 2PC 的准备阶段很像。协调者向参与者发送 commit 请求，参与者如果可以提交就返回 Yes 响应，否则返回 No 响应。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1. 事务询问&lt;/strong&gt; 协调者向参与者发送 CanCommit 请求。询问是否可以执行事务提交操作。然后开始等待参与者的响应。&lt;br /&gt;
+&lt;strong&gt;2. 响应反馈&lt;/strong&gt; 参与者接到 CanCommit 请求之后，正常情况下，如果其自身认为可以顺利执行事务，则返回 Yes 响应，并进入预备状态。否则反馈 No&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PreCommit 阶段&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本阶段协调者会根据第一阶段的询盘结果采取相应操作，询盘结果主要有两种：&lt;/p&gt;
+&lt;p&gt;** 情况 1-** 假如协调者从所有的参与者获得的反馈都是 Yes 响应，那么就会执行事务的预执行：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1. 发送预提交请求&lt;/strong&gt; 协调者向参与者发送 PreCommit 请求，并进入 Prepared 阶段。&lt;br /&gt;
+&lt;strong&gt;2. 事务预提交&lt;/strong&gt; 参与者接收到 PreCommit 请求后，会执行事务操作，并将 undo 和 redo 信息记录到事务日志中。&lt;br /&gt;
+&lt;strong&gt;3. 响应反馈&lt;/strong&gt; 如果参与者成功的执行了事务操作，则返回 ACK 响应，同时开始等待最终指令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;** 情况 2-** 假如有任何一个参与者向协调者发送了 No 响应，或者等待超时之后，协调者都没有接到参与者的响应，那么就执行事务的中断。具体步骤如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1. 发送中断请求&lt;/strong&gt; 协调者向所有参与者发送 abort 请求。&lt;br /&gt;
+&lt;strong&gt;2. 中断事务&lt;/strong&gt; 参与者收到来自协调者的 abort 请求之后（或超时之后，仍未收到协调者的请求），执行事务的中断。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;doCommit 阶段&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;该阶段进行真正的事务提交，也可以分为以下两种情况。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;情况 1 - 执行提交&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;针对第一种情况，协调者向各个参与者发起事务提交请求，具体步骤如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1. 协调者向所有参与者发送事务 commit 通知&lt;br /&gt;
+ 2. 所有参与者在收到通知之后执行 commit 操作，并释放占有的资源&lt;br /&gt;
+ 3. 参与者向协调者反馈事务提交结果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;情况 2 - 中断事务&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;协调者没有接收到参与者发送的 ACK 响应（可能是接受者发送的不是 ACK 响应，也可能响应超时），那么就会执行中断事务。具体步骤如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.&lt;strong&gt; 发送中断请求&lt;/strong&gt; 协调者向所有参与者发送事务 rollback 通知。&lt;br /&gt;
+2.&lt;strong&gt; 事务回滚&lt;/strong&gt; 所有参与者在收到通知之后执行 rollback 操作，并释放占有的资源。&lt;br /&gt;
+3.&lt;strong&gt; 反馈结果&lt;/strong&gt; 参与者向协调者反馈事务提交结果。&lt;br /&gt;
+4.&lt;strong&gt; 中断事务&lt;/strong&gt; 协调者接收到参与者反馈的 ACK 消息之后，执行事务的中断。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3saga&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3saga&#34;&gt;#&lt;/a&gt; 3.SAGA&lt;/h2&gt;
+&lt;h3 id=&#34;a基本概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a基本概念&#34;&gt;#&lt;/a&gt; a. 基本概念&lt;/h3&gt;
+&lt;p&gt;Saga 是这一篇数据库论文 saga 提到的一个方案。其核心思想是将长事务拆分为多个本地短事务，由 Saga 事务协调器协调，如果正常结束那就正常完成，如果某个步骤失败，则根据相反顺序一次调用补偿操作。&lt;/p&gt;
+&lt;p&gt;在 Saga 模式中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;可补偿事务&lt;/em&gt; 是通过处理另一个具有相反效果的事务来撤消的事务。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;透视事务&lt;/em&gt;是传奇中的 go/no-go 点。 如果透视事务提交，则 saga 将运行到完成为止。 透视事务可以是既不可补偿也不可重试的事务，也可以是最后一个可补偿事务，也可以是传奇中的第一个可重试事务。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;可重试事务&lt;/em&gt; 是遵循透视事务且保证成功事务的事务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有两种常见的传奇实现方法， &lt;em&gt;即编舞&lt;/em&gt; 和 &lt;em&gt;业务流程&lt;/em&gt;。 每个方法都有自己的一组挑战和技术来协调工作流。&lt;/p&gt;
+&lt;h3 id=&#34;bsaga事务的特点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#bsaga事务的特点&#34;&gt;#&lt;/a&gt; b.SAGA 事务的特点：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;并发度高，不用像 XA 事务那样长期锁定资源&lt;/li&gt;
+&lt;li&gt;需要定义正常操作以及补偿操作，开发量比 XA 大&lt;/li&gt;
+&lt;li&gt;一致性较弱，对于转账，可能发生 A 用户已扣款，最后转账又失败的情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;论文里面的 SAGA 内容较多，包括两种恢复策略，包括分支事务并发执行，我们这里的讨论，仅包括最简单的 SAGA&lt;/p&gt;
+&lt;p&gt;SAGA 适用的场景较多，长事务适用，对中间结果不敏感的业务场景适用&lt;/p&gt;
+&lt;p&gt;如果读者想要进一步研究 SAGA，go 语言可参考 DTM，java 语言可参考 seata&lt;/p&gt;
+&lt;h2 id=&#34;4tcc-try-confirm-cancel&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4tcc-try-confirm-cancel&#34;&gt;#&lt;/a&gt; 4.TCC (Try-Confirm-Cancel)&lt;/h2&gt;
+&lt;h3 id=&#34;a基本概念-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a基本概念-2&#34;&gt;#&lt;/a&gt; a. 基本概念&lt;/h3&gt;
+&lt;p&gt;关于 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Apostate’s Opinion》的论文提出。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://fastly.jsdelivr.net/gh/crabeye/site-asserts/blog/article-files/2022/06/seata_tcc-1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCC 分为 3 个阶段&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务资源（准隔离性）&lt;/li&gt;
+&lt;li&gt;Confirm 阶段：确认执行真正执行业务，不作任何业务检查，只使用 Try 阶段预留的业务资源，Confirm     操作要求具备幂等设计，Confirm 失败后需要进行重试。&lt;/li&gt;
+&lt;li&gt;Cancel 阶段：取消执行，释放 Try 阶段预留的业务资源。Cancel 阶段的异常和 Confirm     阶段异常处理方案基本上一致，要求满足幂等设计。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;把上面商城下单为例，在 try 阶段会冻结商品的库存数量，并不真正减少库存，而是在 Confirm 里面进行库存的扣减，Cancel 里进行库存解冻。&lt;/p&gt;
+&lt;figure class=&#34;highlight mermaid&#34;&gt;&lt;figcaption data-lang=&#34;mermaid&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;graph&lt;/span&gt; LR&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;A&lt;span class=&#34;token text string&#34;&gt;(Initial State)&lt;/span&gt;&lt;span class=&#34;token inter-arrow-label&#34;&gt;&lt;span class=&#34;token arrow-head arrow operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token label property&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;token arrow operator&#34;&gt;--&gt;&lt;/span&gt;&lt;/span&gt;B&lt;span class=&#34;token text string&#34;&gt;(Reserved State)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;B&lt;span class=&#34;token inter-arrow-label&#34;&gt;&lt;span class=&#34;token arrow-head arrow operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token label property&#34;&gt;confirm&lt;/span&gt;&lt;span class=&#34;token arrow operator&#34;&gt;--&gt;&lt;/span&gt;&lt;/span&gt;C&lt;span class=&#34;token text string&#34;&gt;(Final State)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;B&lt;span class=&#34;token inter-arrow-label&#34;&gt;&lt;span class=&#34;token arrow-head arrow operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token label property&#34;&gt;Cancel&lt;/span&gt;&lt;span class=&#34;token arrow operator&#34;&gt;--&gt;&lt;/span&gt;&lt;/span&gt;A&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;B&lt;span class=&#34;token inter-arrow-label&#34;&gt;&lt;span class=&#34;token arrow-head arrow operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token label property&#34;&gt;Timeout&lt;/span&gt;&lt;span class=&#34;token arrow operator&#34;&gt;--&gt;&lt;/span&gt;&lt;/span&gt;A&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;btcc特点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#btcc特点&#34;&gt;#&lt;/a&gt; b.TCC 特点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;并发度较高，无长期资源锁定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开发量较大，需要提供 Try/Confirm/Cancel 接口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;一致性较好，不会发生 SAGA 已扣款最后又转账失败的情况&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TCC 适用于订单类业务，对中间状态有约束的业务&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若【发起方】/【参与方】因崩溃遗失了信息，则会造成有的【参与方】已 Confirm，有的【参与方】则被 Cancel 了，甚至于依然保持在预留状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5本地消息表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5本地消息表&#34;&gt;#&lt;/a&gt; 5. 本地消息表&lt;/h2&gt;
+&lt;p&gt;本地消息表这个方案最初是 ebay 架构师 Dan Pritchett 在 2008 年发表给 ACM 的文章。设计核心是将需要分布式处理的任务通过消息的方式来异步确保执行。&lt;/p&gt;
+&lt;p&gt;以前面商城下单为例，本地消息表的执行过程如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://fastly.jsdelivr.net/gh/crabeye/site-asserts/blog/article-files/2022/06/20220622170428.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;写本地消息和业务操作放在一个事务里，保证了业务和发消息的原子性，要么他们全都成功，要么全都失败。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;容错机制：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;扣减余额事务 失败时，事务直接回滚，无后续步骤&lt;/li&gt;
+&lt;li&gt;轮序生产消息失败， 增加余额事务失败都会进行重试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;本地消息表的特点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;长事务仅需要分拆成多个任务，使用简单&lt;/li&gt;
+&lt;li&gt;生产者需要额外的创建消息表&lt;/li&gt;
+&lt;li&gt;每个本地消息表都需要进行轮询&lt;/li&gt;
+&lt;li&gt;消费者的逻辑如果无法通过重试成功，那么还需要更多的机制，来回滚操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;适用于可异步执行的业务，且后续操作无需回滚的业务&lt;/p&gt;
+&lt;h2 id=&#34;6事务消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6事务消息&#34;&gt;#&lt;/a&gt; 6. 事务消息&lt;/h2&gt;
+&lt;p&gt;在上述的本地消息表方案中，生产者需要额外创建消息表，还需要对本地消息表进行轮询，业务负担较重。阿里开源的 RocketMQ 4.3 之后的版本正式支持事务消息，该事务消息本质上是把本地消息表放到 RocketMQ 上（实际上就是把上图 2 的步骤使用支持事务的消息队列替换），解决生产端的消息发送与本地事务执行的原子性问题。&lt;/p&gt;
+&lt;p&gt;事务消息发送及提交：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发送消息（half 消息）&lt;/li&gt;
+&lt;li&gt;服务端存储消息，并响应消息的写入结果&lt;/li&gt;
+&lt;li&gt;根据发送结果执行本地事务（如果写入失败，此时 half 消息对业务不可见，本地逻辑不执行）&lt;/li&gt;
+&lt;li&gt;根据本地事务状态执行 Commit 或者 Rollback（Commit 操作发布消息，消息对消费者可见）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;补偿流程：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对没有 Commit/Rollback 的事务消息（pending 状态的消息），从服务端发起一次 “回查”&lt;/p&gt;
+&lt;p&gt;Producer 收到回查消息，返回消息对应的本地事务的状态，为 Commit 或者 Rollback&lt;/p&gt;
+&lt;p&gt;事务消息方案与本地消息表机制非常类似，区别主要在于原先相关的本地表操作替换成了一个反查接口&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;事务消息特点如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;长事务仅需要分拆成多个任务，并提供一个反查接口，使用简单&lt;/li&gt;
+&lt;li&gt;消费者的逻辑如果无法通过重试成功，那么还需要更多的机制，来回滚操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;适用于可异步执行的业务，且后续操作无需回滚的业务&lt;/p&gt;
+&lt;p&gt;如果读者想要进一步研究事务消息，可参考 rocketmq，为了方便大家学习事务消息，DTM 也提供了简单实现&lt;/p&gt;
+&lt;h2 id=&#34;7最大努力通知&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7最大努力通知&#34;&gt;#&lt;/a&gt; 7. 最大努力通知&lt;/h2&gt;
+&lt;p&gt;发起通知方通过一定的机制最大努力将业务处理结果通知到接收方。具体包括：&lt;/p&gt;
+&lt;p&gt;有一定的消息重复通知机制。因为接收通知方可能没有接收到通知，此时要有一定的机制对消息重复通知。&lt;/p&gt;
+&lt;p&gt;消息校对机制。如果尽最大努力也没有通知到接收方，或者接收方消费消息后要再次消费，此时可由接收方主动向通知方查询消息信息来满足需求。&lt;/p&gt;
+&lt;p&gt;前面介绍的的本地消息表和事务消息都属于可靠消息，与这里介绍的最大努力通知有什么不同？&lt;/p&gt;
+&lt;p&gt;可靠消息一致性，发起通知方需要保证将消息发出去，并且将消息发到接收通知方，消息的可靠性关键由发起通知方来保证。&lt;/p&gt;
+&lt;p&gt;最大努力通知，发起通知方尽最大的努力将业务处理结果通知为接收通知方，但是可能消息接收不到，此时需要接收通知方主动调用发起通知方的接口查询业务处理结果，通知的可靠性关键在接收通知方。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方案上，最大努力通知需要：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提供接口，让接受通知放能够通过接口查询业务处理结果&lt;/li&gt;
+&lt;li&gt;消息队列 ACK 机制，消息队列按照间隔 1min、5min、10min、30min、1h、2h、5h、10h 的方式，逐步拉大通知间隔     ，直到达到通知要求的时间窗口上限。之后不再通知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最大努力通知适用于业务通知类型，例如微信交易的结果，就是通过最大努力通知方式通知各个商户，既有回调通知，也有交易查询接口&lt;/p&gt;
+&lt;h2 id=&#34;8at事务模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#8at事务模式&#34;&gt;#&lt;/a&gt; 8.AT 事务模式&lt;/h2&gt;
+&lt;p&gt;这是阿里开源项目 seata 中的一种事务模式，在蚂蚁金服也被称为 FMT。优点是该事务模式使用方式，类似 XA 模式，业务无需编写各类补偿操作，回滚由框架自动完成，缺点也类似 AT，存在较长时间的锁，不满足高并发的场景。有兴趣的同学可以参考 seata-AT&lt;/p&gt;
+&lt;h1 id=&#34;三-分布式事务中的异常处理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-分布式事务中的异常处理&#34;&gt;#&lt;/a&gt; 三、分布式事务中的异常处理&lt;/h1&gt;
+&lt;p&gt;分布式事务中，会由于网络和业务异常问题导致 TM 和 RM 之间的通信问题，主要包括下面三类：&lt;/p&gt;
+&lt;h2 id=&#34;空回滚&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#空回滚&#34;&gt;#&lt;/a&gt; 空回滚&lt;/h2&gt;
+&lt;p&gt;在没有调用 TCC 资源 Try 方法的情况下，调用了二阶段的 Cancel 方法，Cancel 方法需要识别出这是一个空回滚，然后直接返回成功。&lt;/p&gt;
+&lt;p&gt;出现原因是当一个分支事务所在服务宕机或网络异常，分支事务调用记录为失败，这个时候其实是没有执行 Try 阶段，当故障恢复后，分布式事务进行回滚则会调用二阶段的 Cancel 方法，从而形成空回滚。&lt;/p&gt;
+&lt;h2 id=&#34;幂等&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#幂等&#34;&gt;#&lt;/a&gt; 幂等&lt;/h2&gt;
+&lt;p&gt;由于任何一个请求都可能出现网络异常，出现重复请求，所以所有的分布式事务分支，都需要保证幂等性&lt;/p&gt;
+&lt;h2 id=&#34;悬挂&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#悬挂&#34;&gt;#&lt;/a&gt; 悬挂&lt;/h2&gt;
+&lt;p&gt;悬挂就是对于一个分布式事务，其二阶段 Cancel 接口比 Try 接口先执行。&lt;/p&gt;
+&lt;p&gt;出现原因是在 RPC 调用分支事务 try 时，先注册分支事务，再执行 RPC 调用，如果此时 RPC 调用的网络发生拥堵，RPC 超时以后，TM 就会通知 RM 回滚该分布式事务，可能回滚完成后，RPC 请求才到达参与者真正执行。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTI4MTE4MDUvYXJ0aWNsZS9kZXRhaWxzLzEyMTMxMzAwNg==&#34;&gt;分布式事务七种解决方案，最后一种经典了！_独行侠梦的博客 - CSDN 博客&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNTYxNjgxMA==&#34;&gt;分布式一致性之两阶段提交协议、三阶提交协议 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">https://blog.liq2.com/article/55b5aa61</guid>
             <title>说一说微服务网关</title>
             <link>https://blog.liq2.com/article/55b5aa61</link>
-            <category term="JAVA后端" scheme="https://blog.liq2.com/categories/JAVA%E5%90%8E%E7%AB%AF/" />
+            <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
             <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
             <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
             <pubDate>Tue, 21 Jun 2022 18:18:03 +0800</pubDate>
