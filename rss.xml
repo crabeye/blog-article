@@ -350,9 +350,9 @@ RM--&amp;gt;TM:commited
 &lt;p&gt;悬挂就是对于一个分布式事务，其二阶段 Cancel 接口比 Try 接口先执行。&lt;/p&gt;
 &lt;p&gt;出现原因是在 RPC 调用分支事务 try 时，先注册分支事务，再执行 RPC 调用，如果此时 RPC 调用的网络发生拥堵，RPC 超时以后，TM 就会通知 RM 回滚该分布式事务，可能回滚完成后，RPC 请求才到达参与者真正执行。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;参考文章：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTI4MTE4MDUvYXJ0aWNsZS9kZXRhaWxzLzEyMTMxMzAwNg==&#34;&gt;分布式事务七种解决方案，最后一种经典了！_独行侠梦的博客 - CSDN 博客&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNTYxNjgxMA==&#34;&gt;分布式一致性之两阶段提交协议、三阶提交协议 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTI4MTE4MDUvYXJ0aWNsZS9kZXRhaWxzLzEyMTMxMzAwNg==&#34;&gt;分布式事务七种解决方案，最后一种经典了！_独行侠梦的博客 - CSDN 博客&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNTYxNjgxMA==&#34;&gt;分布式一致性之两阶段提交协议、三阶提交协议 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
  ]]></description>
         </item>
