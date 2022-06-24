@@ -20,10 +20,12 @@
             <guid isPermalink="true">https://blog.liq2.com/article/62ceeeec</guid>
             <title>分布式事务解决方案</title>
             <link>https://blog.liq2.com/article/62ceeeec</link>
-            <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+            <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+            <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
+            <category term="微服务" scheme="https://blog.liq2.com/categories/backend/java/micro-service/" />
             <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
-            <category term="分布式事务" scheme="https://blog.liq2.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
+            <category term="分布式事务" scheme="https://blog.liq2.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <pubDate>Wed, 22 Jun 2022 09:07:23 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;事务，大多时候我们是说在单体应用情况下，把多个操作整体执行的能力，分布式事务，就是在多个应用甚至多个数据源的情况下，保证操作的事务特性，在开始之前先回顾一下事务的相关基础知识&lt;/p&gt;
 &lt;h1 id=&#34;一-基础概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-基础概念&#34;&gt;#&lt;/a&gt; 一、基础概念&lt;/h1&gt;
@@ -360,7 +362,9 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/55b5aa61</guid>
             <title>说一说微服务网关</title>
             <link>https://blog.liq2.com/article/55b5aa61</link>
-            <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+            <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+            <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
+            <category term="微服务" scheme="https://blog.liq2.com/categories/backend/java/micro-service/" />
             <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
             <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
             <pubDate>Tue, 21 Jun 2022 18:18:03 +0800</pubDate>
@@ -529,7 +533,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/adf95138</guid>
             <title>Promise,async,await学习总结</title>
             <link>https://blog.liq2.com/article/adf95138</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="基础知识" scheme="https://blog.liq2.com/categories/frontend/fundation/" />
             <category term="javascript" scheme="https://blog.liq2.com/tags/javascript/" />
             <pubDate>Sat, 28 May 2022 16:08:41 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;一-promise的2w1h&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-promise的2w1h&#34;&gt;#&lt;/a&gt; 一、Promise 的 2W1H&lt;/h2&gt;
@@ -616,7 +621,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/7654e55b</guid>
             <title>各个管理端框架比较参考</title>
             <link>https://blog.liq2.com/article/7654e55b</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
             <category term="UI框架" scheme="https://blog.liq2.com/tags/UI%E6%A1%86%E6%9E%B6/" />
             <pubDate>Wed, 25 May 2022 08:32:01 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;市面上越来越多的好看的管理端框架，真是可谓眼花缭乱，对于做主要做后端的人来说，真是个好事情，拿下代码来稍作学习便可以开发管理系统了！本文就分享一些体验过的框架。&lt;/p&gt;
@@ -673,7 +679,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/768b74a2</guid>
             <title>jsDelivr静态文件CDN加速失效之后解决方案和PicGo图床基本使用</title>
             <link>https://blog.liq2.com/article/768b74a2</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
             <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
             <category term="PicGo图床" scheme="https://blog.liq2.com/tags/PicGo%E5%9B%BE%E5%BA%8A/" />
             <pubDate>Fri, 20 May 2022 16:33:30 +0800</pubDate>
@@ -745,7 +752,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/ffae4388</guid>
             <title>用jsDelivr和Github做免费的CDN加速</title>
             <link>https://blog.liq2.com/article/ffae4388</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
             <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
             <category term="CDN加速" scheme="https://blog.liq2.com/tags/CDN%E5%8A%A0%E9%80%9F/" />
             <pubDate>Mon, 16 May 2022 12:13:50 +0800</pubDate>
@@ -780,8 +788,9 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/7d501b47</guid>
             <title>Hexo的aomori主题使用Remark42搭建文章评论功能</title>
             <link>https://blog.liq2.com/article/7d501b47</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
-            <category term="Hexo学习" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/Hexo%E5%AD%A6%E4%B9%A0/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
+            <category term="Hexo" scheme="https://blog.liq2.com/categories/frontend/tools/hexo/" />
             <category term="Hexo" scheme="https://blog.liq2.com/tags/Hexo/" />
             <category term="工具使用" scheme="https://blog.liq2.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" />
             <pubDate>Sun, 15 May 2022 13:32:25 +0800</pubDate>
@@ -853,7 +862,9 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/3aeffd05</guid>
             <title>Alpine和eleventy搭配的基本使用</title>
             <link>https://blog.liq2.com/article/3aeffd05</link>
-            <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+            <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+            <category term="开发框架" scheme="https://blog.liq2.com/categories/frontend/framework/" />
+            <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
             <category term="Alpine" scheme="https://blog.liq2.com/tags/Alpine/" />
             <category term="11ty" scheme="https://blog.liq2.com/tags/11ty/" />
             <category term="eleventy" scheme="https://blog.liq2.com/tags/eleventy/" />
@@ -865,7 +876,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/955aeda8</guid>
             <title>JAVA多线程总结之一</title>
             <link>https://blog.liq2.com/article/955aeda8</link>
-            <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+            <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+            <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
             <category term="多线程" scheme="https://blog.liq2.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
             <category term="线程池" scheme="https://blog.liq2.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" />
             <category term="JUC" scheme="https://blog.liq2.com/tags/JUC/" />
@@ -877,7 +889,8 @@ RM--&amp;gt;TM:commited
             <guid isPermalink="true">https://blog.liq2.com/article/52cf48bf</guid>
             <title>开通博客第一天</title>
             <link>https://blog.liq2.com/article/52cf48bf</link>
-            <category term="随便写写" scheme="https://blog.liq2.com/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" />
+            <category term="感悟" scheme="https://blog.liq2.com/categories/comprehension/" />
+            <category term="心情" scheme="https://blog.liq2.com/categories/comprehension/mood/" />
             <category term="心情记录" scheme="https://blog.liq2.com/tags/%E5%BF%83%E6%83%85%E8%AE%B0%E5%BD%95/" />
             <category term="胡言乱语" scheme="https://blog.liq2.com/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" />
             <pubDate>Thu, 12 May 2022 21:02:40 +0800</pubDate>

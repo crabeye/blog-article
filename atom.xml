@@ -347,10 +347,12 @@ RM--&amp;gt;TM:commited
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNTYxNjgxMA==&#34;&gt;分布式一致性之两阶段提交协议、三阶提交协议 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
-        <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+        <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+        <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
+        <category term="微服务" scheme="https://blog.liq2.com/categories/backend/java/micro-service/" />
         <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
-        <category term="分布式事务" scheme="https://blog.liq2.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
+        <category term="分布式事务" scheme="https://blog.liq2.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <updated>2022-06-22T01:07:23.000Z</updated>
     </entry>
     <entry>
@@ -517,7 +519,9 @@ RM--&amp;gt;TM:commited
 &lt;/table&gt;
 &lt;p&gt;过滤器常用的是请求地址的重写&lt;/p&gt;
 &lt;figure class=&#34;highlight yaml&#34;&gt;&lt;figcaption data-lang=&#34;YAML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token key atrule&#34;&gt;spring&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token key atrule&#34;&gt;cloud&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token key atrule&#34;&gt;gateway&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token key atrule&#34;&gt;routes&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;token key atrule&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; rewrite_filter&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token key atrule&#34;&gt;uri&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; http&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;//localhost&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8081&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token key atrule&#34;&gt;predicates&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;-&lt;/span&gt; Path=/test/&lt;span class=&#34;token important&#34;&gt;**&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token key atrule&#34;&gt;filters&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;-&lt;/span&gt; RewritePath=/where(&lt;span class=&#34;token punctuation&#34;&gt;?&lt;/span&gt;&amp;lt;segment&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;/&lt;span class=&#34;token punctuation&#34;&gt;?&lt;/span&gt;.&lt;span class=&#34;token important&#34;&gt;*)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; /test(&lt;span class=&#34;token punctuation&#34;&gt;?&lt;/span&gt;&amp;lt;segment&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;/&lt;span class=&#34;token punctuation&#34;&gt;?&lt;/span&gt;.&lt;span class=&#34;token important&#34;&gt;*)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-        <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+        <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+        <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
+        <category term="微服务" scheme="https://blog.liq2.com/categories/backend/java/micro-service/" />
         <category term="微服务中间件" scheme="https://blog.liq2.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" />
         <category term="Spring Cloud" scheme="https://blog.liq2.com/tags/Spring-Cloud/" />
         <updated>2022-06-21T10:18:03.000Z</updated>
@@ -605,7 +609,8 @@ RM--&amp;gt;TM:commited
 &lt;/ul&gt;
 &lt;p&gt;不在 async 函数体里面会报错😒&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="基础知识" scheme="https://blog.liq2.com/categories/frontend/fundation/" />
         <category term="javascript" scheme="https://blog.liq2.com/tags/javascript/" />
         <updated>2022-05-28T08:08:41.000Z</updated>
     </entry>
@@ -662,7 +667,8 @@ RM--&amp;gt;TM:commited
 &lt;p&gt;预览地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly92dWUtcHJvLmFyY28uZGVzaWduLw==&#34;&gt;点我预览&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://fastly.jsdelivr.net/gh/crabeye/site-asserts/blog/article-files/2022/05/image-20220525115320506.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
         <category term="UI框架" scheme="https://blog.liq2.com/tags/UI%E6%A1%86%E6%9E%B6/" />
         <updated>2022-05-25T00:32:01.000Z</updated>
     </entry>
@@ -733,7 +739,8 @@ RM--&amp;gt;TM:commited
 &lt;h3 id=&#34;文件上传和链接获取&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文件上传和链接获取&#34;&gt;#&lt;/a&gt; 文件上传和链接获取&lt;/h3&gt;
 &lt;p&gt;上传和链接获取这个应该是用过电脑一年以上的人应该都是了的，应该不用多说了，直接上传剪贴板的图片功能也支持微信等一些工具的截图，💃真是非常的 nice 啊！&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
         <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
         <category term="PicGo图床" scheme="https://blog.liq2.com/tags/PicGo%E5%9B%BE%E5%BA%8A/" />
         <updated>2022-05-20T08:33:30.000Z</updated>
@@ -768,7 +775,8 @@ RM--&amp;gt;TM:commited
 &lt;h3 id=&#34;引用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#引用&#34;&gt;#&lt;/a&gt; 引用&lt;/h3&gt;
 &lt;p&gt;在 html 或者 markdown 文件里面引用 URL  💃&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
         <category term="jsDelivr" scheme="https://blog.liq2.com/tags/jsDelivr/" />
         <category term="CDN加速" scheme="https://blog.liq2.com/tags/CDN%E5%8A%A0%E9%80%9F/" />
         <updated>2022-05-16T04:13:50.000Z</updated>
@@ -840,8 +848,9 @@ RM--&amp;gt;TM:commited
 &lt;h3 id=&#34;remrk客户端显示不了登陆选项&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#remrk客户端显示不了登陆选项&#34;&gt;#&lt;/a&gt; Remrk 客户端显示不了登陆选项&lt;/h3&gt;
 &lt;p&gt;Remark42 默认没有配置任何登陆选项，请至少打开 --scret.anno 以支持匿名评论，其他的认证方式情参考官网说明&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZW1hcms0Mi5jb20vZG9jcy9jb25maWd1cmF0aW9uL2F1dGhvcml6YXRpb24v&#34;&gt; Remark42 认证权限说明&lt;/span&gt;&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
-        <category term="Hexo学习" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/Hexo%E5%AD%A6%E4%B9%A0/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
+        <category term="Hexo" scheme="https://blog.liq2.com/categories/frontend/tools/hexo/" />
         <category term="Hexo" scheme="https://blog.liq2.com/tags/Hexo/" />
         <category term="工具使用" scheme="https://blog.liq2.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" />
         <updated>2022-05-15T05:32:25.000Z</updated>
@@ -852,7 +861,9 @@ RM--&amp;gt;TM:commited
         <link rel="alternate" href="https://blog.liq2.com/article/3aeffd05"/>
         <content type="html">&lt;p&gt;同理，先占位， 后面会更新&lt;/p&gt;
 </content>
-        <category term="Web前端" scheme="https://blog.liq2.com/categories/Web%E5%89%8D%E7%AB%AF/" />
+        <category term="前端" scheme="https://blog.liq2.com/categories/frontend/" />
+        <category term="开发框架" scheme="https://blog.liq2.com/categories/frontend/framework/" />
+        <category term="工具" scheme="https://blog.liq2.com/categories/frontend/tools/" />
         <category term="Alpine" scheme="https://blog.liq2.com/tags/Alpine/" />
         <category term="11ty" scheme="https://blog.liq2.com/tags/11ty/" />
         <category term="eleventy" scheme="https://blog.liq2.com/tags/eleventy/" />
@@ -864,7 +875,8 @@ RM--&amp;gt;TM:commited
         <link rel="alternate" href="https://blog.liq2.com/article/955aeda8"/>
         <content type="html">&lt;p&gt;这里还没有任何内容，先占个位！&lt;/p&gt;
 </content>
-        <category term="Java后端" scheme="https://blog.liq2.com/categories/Java%E5%90%8E%E7%AB%AF/" />
+        <category term="后端" scheme="https://blog.liq2.com/categories/backend/" />
+        <category term="Java" scheme="https://blog.liq2.com/categories/backend/java/" />
         <category term="多线程" scheme="https://blog.liq2.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
         <category term="线程池" scheme="https://blog.liq2.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" />
         <category term="JUC" scheme="https://blog.liq2.com/tags/JUC/" />
@@ -885,7 +897,8 @@ RM--&amp;gt;TM:commited
 &lt;p&gt;&lt;img data-src=&#34;https://fastly.jsdelivr.net/gh/crabeye/site-asserts/blog/article-files/2022/05/cover_20220512.jfif&#34; alt=&#34;happy&#34; /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;加油&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#加油&#34;&gt;#&lt;/a&gt; 加油！&lt;/h2&gt;
 </content>
-        <category term="随便写写" scheme="https://blog.liq2.com/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" />
+        <category term="感悟" scheme="https://blog.liq2.com/categories/comprehension/" />
+        <category term="心情" scheme="https://blog.liq2.com/categories/comprehension/mood/" />
         <category term="心情记录" scheme="https://blog.liq2.com/tags/%E5%BF%83%E6%83%85%E8%AE%B0%E5%BD%95/" />
         <category term="胡言乱语" scheme="https://blog.liq2.com/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" />
         <updated>2022-05-12T13:02:40.000Z</updated>
